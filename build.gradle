@@ -55,3 +55,12 @@ project(':rest-web') {
         compile('org.springframework.boot:spring-boot-starter-hateoas')
     }
 }
+
+project(':web') {
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter-web') {
+            exclude module: "jackson-databind"
+        }
+        compile('org.springframework.boot:spring-boot-starter-hateoas')
+    }
+}

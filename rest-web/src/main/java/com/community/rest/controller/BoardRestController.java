@@ -36,33 +36,55 @@ public class BoardRestController {
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getBoards(@PageableDefault Pageable pageable) {
 		Page<Board> boards = boardRepository.findAll(pageable);
+
+		/*
+			현재 페이지 수, 총 게시판 수, 한 페이지의 게시판 수 등 페이징 처리에 관한 리소스를 만드는 PagedResources 객체를 생성하기 위해
+			PagedResources 생성자의 파라미터로 사용되는 PageMetadata 객체를 생성했습니다.
+		 */
 		PageMetadata pageMetadata = new PageMetadata(pageable.getPageSize(), boards.getNumber(), boards.getTotalElements());
 		PagedResources<Board> resources = new PagedResources<>(boards.getContent(), pageMetadata);
 		resources.add(linkTo(methodOn(BoardRestController.class).getBoards(pageable)).withSelfRel());
+
 		return ResponseEntity.ok(resources);
 	}
 
-//	@PostMapping
-//	public ResponseEntity<?> postBoard(@RequestBody Board board) {
-//		//valid 체크
-//		board.setCreatedDateNow();
-//		boardRepository.save(board);
-//		return new ResponseEntity<>("{}", HttpStatus.CREATED);
-//	}
-//
-//	@PutMapping("/{idx}")
-//	public ResponseEntity<?> putBoard(@PathVariable("idx")Long idx, @RequestBody Board board) {
-//		//valid 체크
-//		Board persistBoard = boardRepository.getOne(idx) ;
-//		persistBoard.update(board);
-//		boardRepository.save(persistBoard);
-//		return new ResponseEntity<>("{}", HttpStatus.OK);
-//	}
-//
-//	@DeleteMapping("/{idx}")
-//	public ResponseEntity<?> deleteBoard(@PathVariable("idx")Long idx) {
-//		//valid 체크
-//		boardRepository.deleteById(idx);
-//		return new ResponseEntity<>("{}", HttpStatus.OK);
-//	}
+	/**
+	 * @brief 저장하기
+	 * @param board
+	 * @return
+	 */
+	@PostMapping
+	public ResponseEntity<?> postBoard(@RequestBody Board board) {
+		//valid 체크
+		board.setCreatedDateNow();
+		boardRepository.save(board);
+		return new ResponseEntity<>("{}", HttpStatus.CREATED);
+	}
+
+	/**
+	 * @brief 수정하기
+	 * @param idx
+	 * @param board
+	 * @return
+	 */
+	@PutMapping("/{idx}")
+	public ResponseEntity<?> putBoard(@PathVariable("idx")Long idx, @RequestBody Board board) {
+		//valid 체크
+		Board persistBoard = boardRepository.getOne(idx) ;
+		persistBoard.update(board);
+		boardRepository.save(persistBoard);
+		return new ResponseEntity<>("{}", HttpStatus.OK);
+	}
+
+	/**
+	 * @brief 삭제하기
+	 * @param idx
+	 * @return
+	 */
+	@DeleteMapping("/{idx}")
+	public ResponseEntity<?> deleteBoard(@PathVariable("idx")Long idx) {
+		//valid 체크
+		boardRepository.deleteById(idx);
+		return new ResponseEntity<>("{}", HttpStatus.OK);
+	}
 }
