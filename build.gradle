@@ -26,9 +26,7 @@ subprojects {
 
     dependencies {
         compile('org.springframework.boot:spring-boot-starter-data-jpa')
-        compile('org.springframework.boot:spring-boot-starter-security')
         compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
-        compile('org.springframework.data:spring-data-rest-hal-browser')
 
         runtime('org.springframework.boot:spring-boot-devtools')
         runtime('mysql:mysql-connector-java')
@@ -44,23 +42,28 @@ project(':data-rest') {
         compile('org.springframework.boot:spring-boot-starter-data-rest') {
             exclude module: "jackson-databind"
         }
+        compile('org.springframework.data:spring-data-rest-hal-browser')
     }
 }
 
 project(':rest-web') {
     dependencies {
+
         compile('org.springframework.boot:spring-boot-starter-web') {
             exclude module: "jackson-databind"
         }
+        compile('org.springframework.data:spring-data-rest-hal-browser')
         compile('org.springframework.boot:spring-boot-starter-hateoas')
     }
 }
 
 project(':web') {
     dependencies {
-        compile('org.springframework.boot:spring-boot-starter-web') {
-            exclude module: "jackson-databind"
-        }
-        compile('org.springframework.boot:spring-boot-starter-hateoas')
+        compile('org.springframework.boot:spring-boot-starter-web')
+        compile('org.springframework.security:spring-security-oauth2-client')
+        compile('org.springframework.security:spring-security-oauth2-jose')
+        compile('org.springframework.boot:spring-boot-starter-security')
+        compile('org.springframework.boot:spring-boot-starter-web')
+        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     }
 }

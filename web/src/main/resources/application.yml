@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: '85310877271-eu7df48q5ina7ki83qv09og0mapke9ch.apps.googleusercontent.com'
+            client-secret: 'EvN3jTXYSfPRxMXNrsUEI28T'
+          facebook:
+            client-id: '620083941773418'
+            client-secret: '1e91764d42288dccd4d6b1d35675a25c'
+custom:
+  oauth2:
+    kakao:
+      client-id: 'c4bc33199e40f7fa5ebf94b581b5c897'
+      client-secret: 'c4bc33199e40f7fa5ebf94b581b5c897'
