@@ -34,6 +34,7 @@ subprojects {
         compileOnly('org.projectlombok:lombok')
         testCompile('org.springframework.boot:spring-boot-starter-test')
         testCompile('org.springframework.security:spring-security-test')
+        compile('org.springframework.boot:spring-boot-starter-security')
     }
 }
 
@@ -62,7 +63,6 @@ project(':web') {
         compile('org.springframework.boot:spring-boot-starter-web')
         compile('org.springframework.security:spring-security-oauth2-client')
         compile('org.springframework.security:spring-security-oauth2-jose')
-        compile('org.springframework.boot:spring-boot-starter-security')
         compile('org.springframework.boot:spring-boot-starter-web')
         compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     }
