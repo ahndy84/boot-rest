@@ -4,8 +4,22 @@ spring:
     username: ahndy84
     password: samsung10!
     driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+  h2:
+    console:
+      enable: false
+      path: /console
 #  jackson:
 #    serialization:
 #      fail-on-empty-beans: false #빈값은 직렬화하지 않음
+
+
+#    properties:
+#      hibernate:
+#        jdbc:
+#          lob:
+#            non_contextual_creation : true;
 server:
   port: 8081

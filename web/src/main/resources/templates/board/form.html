@@ -65,9 +65,9 @@
 <div th:replace="layout/footer::footer"></div>
 
 <script th:src="@{/js/jquery.min.js}"></script>
-
-<script th:if="${board?.idx}">
+<script th:if="!${board?.idx}">
     $('#insert').click(function() {
+        alert();
         var jsonData = JSON.stringify({
             title : $('#board_title').val(),
             subtitle: $('#board_sub_title').val(),
@@ -87,7 +87,7 @@
                 location.href = '/board/list';
             },
             error: function() {
-                alerT('저장실패!');
+                alert('저장실패!');
             }
         });
     })

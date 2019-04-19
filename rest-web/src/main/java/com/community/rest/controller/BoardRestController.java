@@ -56,6 +56,7 @@ public class BoardRestController {
 	@PostMapping
 	public ResponseEntity<?> postBoard(@RequestBody Board board) {
 		//valid 체크
+		System.out.println("111111111111111111111111 " + board);
 		board.setCreatedDateNow();
 		boardRepository.save(board);
 		return new ResponseEntity<>("{}", HttpStatus.CREATED);
@@ -70,6 +71,7 @@ public class BoardRestController {
 	@PutMapping("/{idx}")
 	public ResponseEntity<?> putBoard(@PathVariable("idx")Long idx, @RequestBody Board board) {
 		//valid 체크
+		System.out.println("---------------------idx : " +idx);
 		Board persistBoard = boardRepository.getOne(idx) ;
 		persistBoard.update(board);
 		boardRepository.save(persistBoard);
