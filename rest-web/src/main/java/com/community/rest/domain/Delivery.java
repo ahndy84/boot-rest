@@ -1,12 +1,10 @@
 package com.community.rest.domain;
 
-import com.community.rest.domain.enums.Address;
 import com.community.rest.domain.enums.DeliveryStatus;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -23,5 +21,12 @@ public class Delivery {
 
 	private Address address;
 
+	@Enumerated(EnumType.STRING)
 	private DeliveryStatus status;
+
+	public static Delivery createDelivery(Address address){
+		Delivery delivery = new Delivery();
+		delivery.setAddress(address);
+		return delivery;
+	}
 }

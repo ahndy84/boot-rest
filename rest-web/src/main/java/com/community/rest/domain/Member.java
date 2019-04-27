@@ -1,6 +1,5 @@
 package com.community.rest.domain;
 
-import com.community.rest.domain.enums.Address;
 import lombok.Getter;
 import lombok.Setter;
 
