@@ -29,11 +29,6 @@ public class OrderItem {
 	private int orderPrice;  // 주문가격
 	private int count;  // 주문수량
 
-	public void setOrder(Order order) {
-		this.order = order;
-		order.addOrderItem(this);
-	}
-
 	/**
 	 * 주문생성
 	 * @param item

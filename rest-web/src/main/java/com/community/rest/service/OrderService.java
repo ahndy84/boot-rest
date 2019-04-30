@@ -31,7 +31,7 @@ public class OrderService {
 	 * @param count
 	 * @return
 	 */
-	public Long Order(Long member_id, Long item_id, int count) {
+	public Long order(Long member_id, Long item_id, int count) {
 		// 엔티티 조회
 		Member member = memberRepository.findOne(member_id);
 		Item item = itemRepository.findOne(item_id);
